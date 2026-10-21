@@ -2,35 +2,38 @@ import java.util.Scanner;
 
 public class IT26102449Lab6Q3 {
     public static void main(String[] args) {
-
-        Scanner input = new Scanner(System.in);
-
-        int number;
-        int sumOfSquare = 0;
-        double meanOfSquare,rms=0,count= 0;
-
+        Scanner scanner = new Scanner(System.in);
+        
+        int count = 0;
+        double sumOfSquares = 0;
+        
         System.out.println("Enter positive integers (terminate input with -99):");
-		number=input.nextInt();
-
-        while (number!=-99) {
-			if(number>0){
-				count++;
-				sumOfSquare=sumOfSquare+(number*number);
-            System.out.print("\n Enter a positive number(Terminate with -99): ");
-            number = input.nextInt();
-			}
-			else {
-				System.out.println("Invalid input");
-				System.out.print("\n Enter positive number (Terminate with -99):");
-				 number = input.nextInt();
-			}
-
-           if (count > 0) {
-                meanOfSquare=sumOfSquare/count;
-				rms=Math.sqrt(meanOfSquare);
+        
+        System.out.print("Enter a number: ");
+        int num = scanner.nextInt();
+        
+        
+        while (num != -99) {
+         
+            if (num < 0) {
+                System.out.println("Invalid input. Please enter a positive integer or -99 to terminate");
+            } else {
+                sumOfSquares += (num * num); 
+                count++;                    
             }
-			
-			System.out.println("Root mean Square : "+rms);
-		}
-	}
+            
+            System.out.print("Enter a number: ");
+            num = scanner.nextInt();
+        }
+        
+       
+        if (count > 0) {
+            double rms = Math.sqrt(sumOfSquares / count);
+            System.out.println("\nThe Root Mean Square (RMS) is: " + rms);
+        } else {
+            System.out.println("\nNo valid numbers were entered.");
+        }
+        
+        
+    }
 }
